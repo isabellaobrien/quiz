@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Vina+Sans&display=swap');
+/* quiz heading plus logo */
+#logo{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 8%;
+    overflow: hidden;
+    height: 80px; 
+    padding-right: 1%;
+}
+#heading{
+    font-family: 'Vina Sans';
+    font-weight: 200;
+    font-size: 280%;
+    text-align: center;
+}
