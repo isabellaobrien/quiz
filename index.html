@@ -13,7 +13,7 @@
         <img id="logo" src="assets/images/brain-logo.png" alt="logo">How knowledgeable are you?
     </h1>
     <!-- starting page -->
-    <div class="game-area">
+    <div class="game-area hide">
         <div id="intro">
             <h3>Welcome to the quiz!</h3> 
         </div>
@@ -27,21 +27,29 @@
     <!-- quiz page -->
 
     <!-- question -->
-    <div class="question-section hide">
-        <div>
-            <h3 id="question"><span id="question-number">1)</span>question?</h3>
+    <div class="question-section game-area">
             <div id="timer">
-                10
+                <span>10</span>
             </div>
-            <div id="life-count">lives:<span>3</span></div>
-    </div>
-
-    <!-- answer -->
-    <div class="answer-section hide">
-            <button class="answer-button" id="answer 1">answer 1</button>
-            <button class="answer-button" id="answer 2">answer 2</button>
-            <button class="answer-button" id="answer 3">answer 3</button>
-            <button class="answer-button" id="answer 4">answer 4</button>
+            <div id="life-count">lives: <span>3</span>
+            </div>  
+        <h3 id="question"><span id="question-number">1) </span>What is my favourite colour?</h3>
+        <!-- answer -->
+        <div class="answer-section">
+            <div class="answer-containers">
+                <button class="answer-button" id="answer 1">answer 1</button>
+            </div>
+            <div class="answer-containers">
+                <button class="answer-button" id="answer 2">answer 2</button>
+            </div>
+            <div class="answer-containers">
+                <button class="answer-button" id="answer 3">answer 3</button>
+            </div>
+            <div class="answer-containers">
+                <button class="answer-button" id="answer 4">answer 4</button>
+            </div>
+            
+        </div>
     </div>
 
     <!-- game over page -->
