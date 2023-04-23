@@ -13,19 +13,21 @@
         <img id="logo" src="assets/images/brain-logo.png" alt="logo">How knowledgeable are you?
     </h1>
     <!-- starting page -->
-    <div class="game-area" class='hide'>
+    <div class="game-area">
         <div id="intro">
-            <h3>Welcome to the quiz</h3> 
+            <h3>Welcome to the quiz!</h3> 
         </div>
-        <button class="btn" id="start-button" aria-label="click this button to start the quiz">
-            Start quiz!  
-        </button>
+        <div id="start-btn-container">
+            <button class="btn" id="start-button" aria-label="click this button to start the quiz">
+                Start  
+            </button>
+        </div>
 
     </div>
     <!-- quiz page -->
 
     <!-- question -->
-    <div class="question-section" class='hide'>
+    <div class="question-section hide">
         <div>
             <h3 id="question"><span id="question-number">1)</span>question?</h3>
             <div id="timer">
@@ -35,7 +37,7 @@
     </div>
 
     <!-- answer -->
-    <div class="answer-section" class='hide'>
+    <div class="answer-section hide">
             <button class="answer-button" id="answer 1">answer 1</button>
             <button class="answer-button" id="answer 2">answer 2</button>
             <button class="answer-button" id="answer 3">answer 3</button>
@@ -43,13 +45,13 @@
     </div>
 
     <!-- game over page -->
-    <div class="gameover-section" class='hide'>
+    <div class="gameover-section  hide">
         <h3 id="game-over">GAME OVER</h3>
         <button class="btn" id="try-again-button">try again</button>
     </div>
 
     <!-- finishing page -->
-    <div class="finishing-section" class='hide'>
+    <div class="finishing-section hide">
         <h3 id="congratulations">Well done you scored <span id="score">250</span></h3>
     </div>
 

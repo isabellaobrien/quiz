@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Vina+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Vina+Sans&display=swap');
 /* quiz heading plus logo */
 #logo{
     background-repeat: no-repeat;
@@ -13,5 +13,39 @@
     font-family: 'Vina Sans';
     font-weight: 200;
     font-size: 280%;
+    text-align: center;
+}
+
+/* class to hide the pages that are not in use at the moment */
+.hide{
+    display: none;
+}
+
+/* starting page */
+.game-area{
+    background-color: #ffff80;
+    padding: 5%;
+    width: 40%;
+    height: 200px;
+    border-radius: 5px;
+    margin: 0 auto;
+    border: 2px black solid;
+    font-family: "Patua One";
+    font-size: 160%;
+}
+.game-area h3{
+    text-align: center;
+    padding-bottom: 7%;
+}
+
+.btn{
+    border: 2px black solid;
+    border-radius: 5px;
+    font-family: "Patua One";
+    padding: 3% 7%;
+    font-size: 120%;
+    text-transform: uppercase;
+}
+#start-btn-container{
     text-align: center;
 }
