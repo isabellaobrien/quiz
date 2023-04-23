@@ -8,20 +8,50 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- heading -->
     <h1 id="heading">
         <img id="logo" src="assets/images/brain-logo.png" alt="logo">How knowledgeable are you?
     </h1>
-
-    <div class="game-area">
+    <!-- starting page -->
+    <div class="game-area" class='hide'>
         <div id="intro">
-    
+            <h3>Welcome to the quiz</h3> 
         </div>
-        <button class="btn" id="start-btn">
-            
+        <button class="btn" id="start-button" aria-label="click this button to start the quiz">
+            Start quiz!  
         </button>
 
     </div>
-    
+    <!-- quiz page -->
+
+    <!-- question -->
+    <div class="question-section" class='hide'>
+        <div>
+            <h3 id="question"><span id="question-number">1)</span>question?</h3>
+            <div id="timer">
+                10
+            </div>
+            <div id="life-count">lives:<span>3</span></div>
+    </div>
+
+    <!-- answer -->
+    <div class="answer-section" class='hide'>
+            <button class="answer-button" id="answer 1">answer 1</button>
+            <button class="answer-button" id="answer 2">answer 2</button>
+            <button class="answer-button" id="answer 3">answer 3</button>
+            <button class="answer-button" id="answer 4">answer 4</button>
+    </div>
+
+    <!-- game over page -->
+    <div class="gameover-section" class='hide'>
+        <h3 id="game-over">GAME OVER</h3>
+        <button class="btn" id="try-again-button">try again</button>
+    </div>
+
+    <!-- finishing page -->
+    <div class="finishing-section" class='hide'>
+        <h3 id="congratulations">Well done you scored <span id="score">250</span></h3>
+    </div>
 
     <script src="assets/js/script.js"></script>
 </body>
