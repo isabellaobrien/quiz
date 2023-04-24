@@ -46,8 +46,9 @@
     font-size: 120%;
     text-transform: uppercase;
 }
-#start-btn-container{
+.btn-container{
     text-align: center;
+    padding-top: 5%;
 }
 
 /* quiz page */
