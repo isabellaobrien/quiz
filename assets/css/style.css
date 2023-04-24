@@ -24,14 +24,14 @@
 /* starting page */
 .game-area{
     background-color: #ffff80;
-    padding: 5%;
+    padding: 4%;
     width: 40%;
-    height: 350px;
+    height: 100%;
     border-radius: 5px;
-    margin: 0 auto;
     border: 2px black solid;
     font-family: "Patua One";
     font-size: 160%;
+    margin: 0 auto;
 }
 .game-area h3{
     text-align: center;
@@ -53,15 +53,21 @@
 /* quiz page */
 
 /* question section */
+.question-section{
+    position: relative;
+}
 #timer{
-    display: inline-block;
-    padding-right: 40%;
-    padding-top: 3%;
+    position:absolute;
+    top:0;
+    left:0;
+    padding: 5%;
 }
 
 #life-count{
-    display: inline-block;
-    padding-left: 40%;
+    position:absolute;
+    top:0;
+    right:0;
+    padding: 5%;
 }
 /* answer section */
 .answer-containers{
