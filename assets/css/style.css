@@ -54,7 +54,7 @@
 /* quiz page */
 
 /* question section */
-.question-section{
+#question-section{
     position: relative;
 }
 #timer{

@@ -2,14 +2,15 @@ const startButton = document.getElementById('start-button');
 
 startButton.addEventListener("click", startQuiz);
 
-let intro = document.getElementById('intro');
-
+let startingPage = document.getElementById('starting-section');
+let quizPage = document.getElementById('question-section');
 
 function startQuiz(){
     console.log("started");
-    startButton.classList.add('hide');
-    intro.classList.add('hide');
+    startingPage.classList.add('hide');
+    quizPage.classList.remove('hide')
 }
+
 // function countdown(){
 
 // }
@@ -43,11 +44,3 @@ function startQuiz(){
 // }
 
 // function gameOver(){
-
-// }
-// function endGame(){
-
-// }
-
-// function resetGame(){
-
