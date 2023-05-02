@@ -9,11 +9,21 @@ function startQuiz(){
     console.log("started");
     startingPage.classList.add('hide');
     quizPage.classList.remove('hide')
+    countdown();
 }
 
-// function countdown(){
-
-// }
+let timeLeft = 15; 
+const seconds = document.getElementById('seconds');
+setInterval(countdown, 1000);
+function countdown(){
+    console.log('countdown begun!')
+    
+    seconds.innerHTML = timeLeft;
+    if(timeLeft > 0){
+        timeLeft --;
+        
+    }
+}
 
 // function lifeCount(){
 
