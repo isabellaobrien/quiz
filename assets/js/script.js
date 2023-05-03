@@ -10,6 +10,7 @@ function startQuiz(){
     startingPage.classList.add('hide');
     quizPage.classList.remove('hide')
     countdown();
+    selectQuestion();
 }
 
 let timeLeft = 15; 
@@ -25,19 +26,6 @@ function countdown(){
 }
 
 // function lifeCount(){
-
-// }
-/** questionpool needs to be initialized first */
-function selectQuestion(){
-    let shuffledQuestions = questionPool.sort(()=> 0.5 - Math.random());
-    let questionsToAsk = shuffledQuestions.slice(0,7);
-    console.log(questionsToAsk)
-}
-// function shuffle(){
-    
-// }
-
-// function displayQuestion(){
 
 // }
 
@@ -58,6 +46,8 @@ function selectQuestion(){
 // }
 
 // function gameOver(){
+
+/**list of questions in the game, only seven will be asked */
 
 let questionPool= [{
     question: "How many elements are in the periodic table?",
@@ -166,9 +156,25 @@ let questionPool= [{
 },
 ]
 
+/**the function shuffles the pool of questions and then selects seven */
+function selectQuestion(){
+    let shuffledQuestions = questionPool.sort(()=> 0.5 - Math.random());
+    let questionsToAsk = shuffledQuestions.slice(0,7);
+    console.log(questionsToAsk)
+    displayQuestion(questionsToAsk);
+}
 
-// function selectQuestion(){
-//     let shuffledQuestions = questionPool.sort(()=> 0.5 - Math.random());
-//     let questionsToAsk = shuffledQuestions.slice(0,7);
-//     console.log(questionsToAsk)
-// }
+let question = document.getElementById('question');
+let answerOne = document.getElementById('answer-1');
+let answerTwo = document.getElementById('answer-2');
+let answerThree = document.getElementById('answer-3');
+let answerFour = document.getElementById('answer-4');
+/**the function shuffles the answers and then displays the question and answers. */
+function displayQuestion(questionsToAsk){
+    questionsToAsk[0].choices.sort(()=> 0.5 - Math.random());
+    question.innerHTML = questionsToAsk[0].question;
+    answerOne.innerHTML = questionsToAsk[0].choices[0];
+    answerTwo.innerHTML = questionsToAsk[0].choices[1];
+    answerThree.innerHTML = questionsToAsk[0].choices[2];
+    answerFour.innerHTML = questionsToAsk[0].choices[3];
+}
