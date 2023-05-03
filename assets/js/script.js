@@ -20,17 +20,21 @@ function countdown(){
     
     seconds.innerHTML = timeLeft;
     if(timeLeft > 0){
-        timeLeft --;
-        
+        timeLeft --;   
     }
 }
 
 // function lifeCount(){
 
 // }
-
+/** questionpool needs to be initialized first */
+function selectQuestion(){
+    let shuffledQuestions = questionPool.sort(()=> 0.5 - Math.random());
+    let questionsToAsk = shuffledQuestions.slice(0,7);
+    console.log(questionsToAsk)
+}
 // function shuffle(){
-
+    
 // }
 
 // function displayQuestion(){
@@ -161,3 +165,10 @@ let questionPool= [{
     correctAnswer: "Israel"  
 },
 ]
+
+
+// function selectQuestion(){
+//     let shuffledQuestions = questionPool.sort(()=> 0.5 - Math.random());
+//     let questionsToAsk = shuffledQuestions.slice(0,7);
+//     console.log(questionsToAsk)
+// }
