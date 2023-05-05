@@ -93,3 +93,11 @@
 input[type=text]{
     padding: 2% 5%;
 }
+
+/* correct and wrong answers */
+.right{
+    background-color: green;
+}
+.wrong{
+    background-color: red;
+}

@@ -13,12 +13,12 @@ function startQuiz(){
     selectQuestion();
 }
 
+
 let timeLeft = 15; 
 const seconds = document.getElementById('seconds');
-setInterval(countdown, 1000);
+let interval = setInterval(countdown, 1000);
 function countdown(){
     console.log('countdown begun!')
-    
     seconds.innerHTML = timeLeft;
     if(timeLeft > 0){
         timeLeft --;   
@@ -33,9 +33,6 @@ function countdown(){
 
 // }
 
-// function checkAnswer(){
-
-// }
 
 // function incrementScore(){
 
@@ -157,11 +154,12 @@ let questionPool= [{
 ]
 
 /**the function shuffles the pool of questions and then selects seven */
+
 function selectQuestion(){
-    let shuffledQuestions = questionPool.sort(()=> 0.5 - Math.random());
-    let questionsToAsk = shuffledQuestions.slice(0,7);
-    console.log(questionsToAsk)
-    displayQuestion(questionsToAsk);
+    // // let shuffledQuestions = questionPool.sort(()=> 0.5 - Math.random());
+    // // let questionsToAsk = shuffledQuestions.slice(0,7);
+    // // console.log(questionsToAsk)
+    displayQuestion(currentQuestionIndex);
 }
 
 let question = document.getElementById('question');
@@ -169,12 +167,47 @@ let answerOne = document.getElementById('answer-1');
 let answerTwo = document.getElementById('answer-2');
 let answerThree = document.getElementById('answer-3');
 let answerFour = document.getElementById('answer-4');
+
 /**the function shuffles the answers and then displays the question and answers. */
-function displayQuestion(questionsToAsk){
-    questionsToAsk[0].choices.sort(()=> 0.5 - Math.random());
-    question.innerHTML = questionsToAsk[0].question;
-    answerOne.innerHTML = questionsToAsk[0].choices[0];
-    answerTwo.innerHTML = questionsToAsk[0].choices[1];
-    answerThree.innerHTML = questionsToAsk[0].choices[2];
-    answerFour.innerHTML = questionsToAsk[0].choices[3];
+let currentQuestionIndex = 0
+function displayQuestion(index){
+    const currentQuestion = questionPool[index]
+    question.innerHTML = currentQuestion.question;
+    answerOne.innerHTML = currentQuestion.choices[0];
+    answerTwo.innerHTML = currentQuestion.choices[1];
+    answerThree.innerHTML = currentQuestion.choices[2];
+    answerFour.innerHTML = currentQuestion.choices[3];
+    
+}
+
+answerOne.addEventListener('click', checkAnswer);
+answerTwo.addEventListener('click', checkAnswer);
+answerThree.addEventListener('click', checkAnswer);
+answerFour.addEventListener('click', checkAnswer);
+
+
+let answerButtons = document.getElementsByClassName('answer-button')
+let nextButton = document.getElementById('next-button');
+
+
+function checkAnswer(event){
+    
+    clearInterval(interval);
+    const answerClicked = event.currentTarget.innerText;
+    let correct = questionPool[currentQuestionIndex].correctAnswer;
+    console.log(answerClicked)
+    if(answerClicked === correct){
+            this.classList.add('right');
+            console.log('right!'); 
+        }
+    else{
+        this.classList.add('wrong');
+        console.log('wrong!');
+        for (let i = 0; i < answerButtons.length; i++) {
+            if (answerButtons[i].innerHTML === correct) {
+                answerButtons[i].classList.add('right'); 
+            }
+        } 
+    }
+    nextButton.classList.remove('hide');
 }
