@@ -22,8 +22,9 @@
 }
 
 /* starting page */
+
 .game-area{
-    background-color: #ffff80;
+    background-color:  #fffb8f;
     padding: 4%;
     width: 40%;
     height: 100%;
@@ -45,6 +46,12 @@
     padding: 3% 7%;
     font-size: 120%;
     text-transform: uppercase;
+    cursor: pointer;
+    background-color: #fa8072;
+}
+.btn:hover{
+    color: white;
+    
 }
 .btn-container{
     text-align: center;
@@ -84,6 +91,8 @@
     padding-top: 2%;
     padding-bottom: 2%;
     font-size: 70%;
+    cursor: pointer;
+    background-color: #e0f0ff;
 }
 
 #question{
