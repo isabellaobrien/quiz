@@ -14,14 +14,18 @@ function startQuiz(){
 }
 
 
-let timeLeft = 15; 
+let timeLeft = 35; 
 const seconds = document.getElementById('seconds');
 let interval = setInterval(countdown, 1000);
 function countdown(){
     console.log('countdown begun!')
     seconds.innerHTML = timeLeft;
-    if(timeLeft > 0){
-        timeLeft --;   
+    if(timeLeft == 0){
+        clearTimeout(interval);   
+    }
+    else{
+        seconds.innerHTML = timeLeft;
+        timeLeft--;
     }
 }
 
@@ -38,9 +42,6 @@ function countdown(){
 
 // }
 
-// function nextQuestion(){
-
-// }
 
 // function gameOver(){
 
@@ -63,7 +64,7 @@ let questionPool= [{
 },
 {
     question: "Who painted the famous artwork 'The Scream'?",
-    choices: ["Gustav Klimt","Vincent van Gogh", "Edvar Munch", "Pablo Picasso"],
+    choices: ["Gustav Klimt","Vincent van Gogh", "Edvard Munch", "Pablo Picasso"],
     correctAnswer: "Edvard Munch"  
 },
 {
@@ -156,9 +157,7 @@ let questionPool= [{
 /**the function shuffles the pool of questions and then selects seven */
 
 function selectQuestion(){
-    // // let shuffledQuestions = questionPool.sort(()=> 0.5 - Math.random());
-    // // let questionsToAsk = shuffledQuestions.slice(0,7);
-    // // console.log(questionsToAsk)
+    questionPool.sort(()=> 0.5 - Math.random())
     displayQuestion(currentQuestionIndex);
 }
 
@@ -170,6 +169,7 @@ let answerFour = document.getElementById('answer-4');
 
 /**the function shuffles the answers and then displays the question and answers. */
 let currentQuestionIndex = 0
+
 function displayQuestion(index){
     const currentQuestion = questionPool[index]
     question.innerHTML = currentQuestion.question;
@@ -189,7 +189,9 @@ answerFour.addEventListener('click', checkAnswer);
 let answerButtons = document.getElementsByClassName('answer-button')
 let nextButton = document.getElementById('next-button');
 
-
+/**the function compares the clicked answer to the correct answer. 
+ * If the answer clicked is the correct one the button will turn green,
+ * if the answer clicked is wrong the button will turn red and the correct answer will be highlighted*/
 function checkAnswer(event){
     
     clearInterval(interval);
@@ -211,3 +213,17 @@ function checkAnswer(event){
     }
     nextButton.classList.remove('hide');
 }
+
+
+nextButton.addEventListener('click', nextQuestion)
+function nextQuestion(){
+    nextButton.classList.add('hide')
+    for(let i=0; i<answerButtons.length; i++){
+        answerButtons[i].classList.remove('right');
+        answerButtons[i].classList.remove('wrong');
+    }
+    
+    startQuiz();
+    interval = setInterval(countdown, 1000)
+}
+
