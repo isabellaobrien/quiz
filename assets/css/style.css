@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Vina+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman&family=Patua+One&family=Vina+Sans&display=swap');
+
 /* quiz heading plus logo */
 #logo{
     background-repeat: no-repeat;
@@ -64,6 +65,7 @@
 #question-section{
     position: relative;
 }
+
 #timer{
     position:absolute;
     top:0;
@@ -98,10 +100,13 @@
 #question{
     padding-bottom: 10px;
 }
+
 /* finishing page */
 input[type=text]{
     padding: 2% 5%;
 }
+
+
 
 /* correct and wrong answers */
 .right{

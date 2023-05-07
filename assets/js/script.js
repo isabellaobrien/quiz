@@ -28,7 +28,7 @@ function countdown(){
         timeLeft--;
     }
 }
-
+/**the function reduces the live count by 1. when the life count reaches 0 the gameOver function is called */
 let lives = document.getElementById('lives')
 let livesLeft = 3
 function lifeCount(){
@@ -43,8 +43,30 @@ function lifeCount(){
 
 // }
 
+// let numberOfQuestion = document.getElementById('question-number')
+let currentQuestionNumber = 1;
+
+function incrementQuestionNumber(){
+    currentQuestionNumber++;
+    // numberOfQuestion.value = currentQuestionNumber;
+    console.log(currentQuestionNumber)
+    if(currentQuestionNumber === 7){
+       andGame 
+    }
+}
+function endGame(){
+
+}
+
 
 function gameOver(){
+    let lifeCountContainer = document.getElementById('life-count');
+    lifeCountContainer.classList.add('hide');
+    seconds.classList.add('hide');
+    quizPage.classList.add('hide');
+    let gameOverPage = document.getElementById('gameover-section');
+    gameOverPage.classList.remove('hide');
+
 }
 /**list of questions in the game, only seven will be asked */
 
@@ -228,5 +250,6 @@ function nextQuestion(){
     questionPool.shift()
     startQuiz();
     interval = setInterval(countdown, 1000)
+    incrementQuestionNumber();
 }
 
