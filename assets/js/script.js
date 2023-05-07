@@ -29,22 +29,23 @@ function countdown(){
     }
 }
 
-// function lifeCount(){
-
-// }
-
-// function selectAnswer(){
-
-// }
-
+let lives = document.getElementById('lives')
+let livesLeft = 3
+function lifeCount(){
+    livesLeft -= 1;
+    lives.innerHTML = livesLeft
+    if(livesLeft === 0){
+        gameOver()
+    }
+}
 
 // function incrementScore(){
 
 // }
 
 
-// function gameOver(){
-
+function gameOver(){
+}
 /**list of questions in the game, only seven will be asked */
 
 let questionPool= [{
@@ -203,6 +204,8 @@ function checkAnswer(event){
             console.log('right!'); 
         }
     else{
+        lifeCount();
+        console.log('life lost')
         this.classList.add('wrong');
         console.log('wrong!');
         for (let i = 0; i < answerButtons.length; i++) {
@@ -214,7 +217,7 @@ function checkAnswer(event){
     nextButton.classList.remove('hide');
 }
 
-
+// the function allows you to move on to the next question. No question will be asked more than once.
 nextButton.addEventListener('click', nextQuestion)
 function nextQuestion(){
     nextButton.classList.add('hide')
@@ -222,7 +225,7 @@ function nextQuestion(){
         answerButtons[i].classList.remove('right');
         answerButtons[i].classList.remove('wrong');
     }
-    
+    questionPool.shift()
     startQuiz();
     interval = setInterval(countdown, 1000)
 }
