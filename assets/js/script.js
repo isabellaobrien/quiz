@@ -56,12 +56,10 @@ function lifeCount(){
 
 // }
 
-// let numberOfQuestion = document.getElementById('question-number')
 let currentQuestionNumber = 1;
 
 function incrementQuestionNumber(){
     currentQuestionNumber++;
-    // numberOfQuestion.value = currentQuestionNumber;
     console.log(currentQuestionNumber)
     if(currentQuestionNumber === 7){
        endGame();
@@ -69,12 +67,15 @@ function incrementQuestionNumber(){
     }
 }
 
+/** the endGame function shows the finishing page once the question count has reached 7 */
 let finishingPage = document.getElementById('finishing-section');
+
 function endGame(){
     finishingPage.classList.remove('hide');
     quizPage.classList.add('hide');
 }
 
+/** the gameOver function displays the gameover page once the lifecount has reached 0 */
 let lifeCountContainer = document.getElementById('life-count');
 let gameOverPage = document.getElementById('gameover-section');
 function gameOver(){
@@ -255,6 +256,7 @@ function checkAnswer(event){
 }
 
 /**the function allows you to move on to the next question. No question will be asked more than once.*/
+
 nextButton.addEventListener('click', nextQuestion)
 function nextQuestion(){
     nextButton.classList.add('hide')
@@ -272,9 +274,19 @@ nextButton.addEventListener('click', ()=>{
     startTime(timeLeft);
     Interval = setInterval(startTime, 1000)
 })
-
+/**the restartQuiz fubction allows yo to restart the quiz by clicking the try again button */
 let tryAgain = document.getElementById('try-again-button');
-tryAgain.addEventListener('click', restartQuiz)
+tryAgain.addEventListener('click', function(){
+    timeLeft = 11;
+    startTime(timeLeft);
+    Interval = setInterval(startTime, 1000);
+    livesLeft = 4;
+    lifeCount(livesLeft);
+    incrementQuestionNumber(currentQuestionNumber);
+    currentQuestionNumber = 0;
+    restartQuiz();
+
+})
 
 function restartQuiz(){
     gameOverPage.classList.add('hide');
@@ -286,4 +298,5 @@ function restartQuiz(){
         answerButtons[i].classList.remove('wrong');
     }
 }
+
 
