@@ -57,10 +57,12 @@ function lifeCount(){
         gameOver()
     }
 }
-
-// function incrementScore(){
-
-// }
+let score = document.getElementById('score');
+let scorePoints = 0;
+function incrementScore(){
+    scorePoints += 150;
+    score.innerHTML = scorePoints;
+}
 
 let currentQuestionNumber = 1;
 
@@ -252,6 +254,7 @@ function checkAnswer(event){
     if(answerClicked === correct){
         this.classList.add('right');
         console.log('right!'); 
+        incrementScore();
     } 
     else{
         lifeCount();
