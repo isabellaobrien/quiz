@@ -216,6 +216,7 @@ let answerFour = document.getElementById('answer-4');
 let currentQuestionIndex = 0
 
 function displayQuestion(index){
+    questionPool[currentQuestionIndex].choices.sort(()=> 0.5 - Math.random())
     const currentQuestion = questionPool[index]
     question.innerHTML = currentQuestion.question;
     answerOne.innerHTML = currentQuestion.choices[0];
@@ -287,26 +288,9 @@ nextButton.addEventListener('click', ()=>{
 })
 /**the restartQuiz fubction allows yo to restart the quiz by clicking the try again button */
 let tryAgain = document.getElementById('try-again-button');
-tryAgain.addEventListener('click', function(){
-    timeLeft = 11;
-    startTime(timeLeft);
-    Interval = setInterval(startTime, 1000);
-    livesLeft = 4;
-    lifeCount(livesLeft);
-    incrementQuestionNumber(currentQuestionNumber);
-    currentQuestionNumber = 0;
-    restartQuiz();
-
-})
+tryAgain.addEventListener('click', restartQuiz)
 
 function restartQuiz(){
-    gameOverPage.classList.add('hide');
-    quizPage.classList.remove('hide');
-    lifeCountContainer.classList.remove('hide');
-    seconds.classList.remove('hide');
-    for(let i=0; i<answerButtons.length; i++){
-        answerButtons[i].classList.remove('right');
-        answerButtons[i].classList.remove('wrong');
-    }
+    window.location.reload(true);
 }
 
