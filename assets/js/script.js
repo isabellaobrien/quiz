@@ -31,6 +31,12 @@ function startTime(){
     timeLeft--;
     if(timeLeft === -1){
         lifeCount()
+        const correct = questionPool[currentQuestionIndex].correctAnswer;
+        for (let i = 0; i < answerButtons.length; i++) {
+            if (answerButtons[i].innerHTML === correct) {
+                answerButtons[i].classList.add('right'); 
+            }
+        }
         clearInterval(Interval)
         nextButton.classList.remove('hide')
     }
@@ -231,11 +237,16 @@ let nextButton = document.getElementById('next-button');
 /**the function compares the clicked answer to the correct answer. 
  * If the answer clicked is the correct one the button will turn green,
  * if the answer clicked is wrong the button will turn red and the correct answer will be highlighted*/
+
+/**
+ * 
+ * @param {Event} event 
+ */
+let correct;
 function checkAnswer(event){
-    
     clearInterval(Interval);
     const answerClicked = event.currentTarget.innerText;
-    let correct = questionPool[currentQuestionIndex].correctAnswer;
+    correct = questionPool[currentQuestionIndex].correctAnswer;
     console.log(answerClicked)
     if(answerClicked === correct){
         this.classList.add('right');
@@ -298,5 +309,4 @@ function restartQuiz(){
         answerButtons[i].classList.remove('wrong');
     }
 }
-
 
