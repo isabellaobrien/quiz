@@ -51,11 +51,15 @@ function incrementQuestionNumber(){
     // numberOfQuestion.value = currentQuestionNumber;
     console.log(currentQuestionNumber)
     if(currentQuestionNumber === 7){
-       andGame 
+       endGame();
+       console.log('end game!')
     }
 }
-function endGame(){
 
+let finishingPage = document.getElementById('finishing-section');
+function endGame(){
+    finishingPage.classList.remove('hide');
+    quizPage.classList.add('hide');
 }
 
 
