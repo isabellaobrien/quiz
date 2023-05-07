@@ -1,3 +1,8 @@
+/**the startQuiz function is activated once the start button is clicked.
+ * The function hides the starting page and shows the quiz page.
+ * the timer starts and the question to ask is selected.
+ */
+
 const startButton = document.getElementById('start-button');
 
 startButton.addEventListener("click", startQuiz);
@@ -9,31 +14,39 @@ function startQuiz(){
     console.log("started");
     startingPage.classList.add('hide');
     quizPage.classList.remove('hide')
-    countdown();
     selectQuestion();
 }
 
+/**the countDown function should countdown from 10. if the timer reaches 0 you loose a live */
 
-let timeLeft = 35; 
-const seconds = document.getElementById('seconds');
-let interval = setInterval(countdown, 1000);
-function countdown(){
-    console.log('countdown begun!')
-    seconds.innerHTML = timeLeft;
-    if(timeLeft == 0){
-        clearTimeout(interval);   
+let timeLeft = 10;
+let seconds = document.getElementById('seconds');
+let Interval;
+startButton.addEventListener('click', ()=> {
+    clearInterval(Interval);
+    Interval = setInterval(startTime, 1000)
+})
+
+function startTime(){
+    timeLeft--;
+    if(timeLeft === -1){
+        lifeCount()
+        clearInterval(Interval)
+        nextButton.classList.remove('hide')
     }
     else{
         seconds.innerHTML = timeLeft;
-        timeLeft--;
     }
 }
+
+
 /**the function reduces the live count by 1. when the life count reaches 0 the gameOver function is called */
+
 let lives = document.getElementById('lives')
 let livesLeft = 3
 function lifeCount(){
     livesLeft -= 1;
-    lives.innerHTML = livesLeft
+    lives.innerHTML = livesLeft;
     if(livesLeft === 0){
         gameOver()
     }
@@ -62,15 +75,13 @@ function endGame(){
     quizPage.classList.add('hide');
 }
 
-
+let lifeCountContainer = document.getElementById('life-count');
+let gameOverPage = document.getElementById('gameover-section');
 function gameOver(){
-    let lifeCountContainer = document.getElementById('life-count');
     lifeCountContainer.classList.add('hide');
     seconds.classList.add('hide');
     quizPage.classList.add('hide');
-    let gameOverPage = document.getElementById('gameover-section');
     gameOverPage.classList.remove('hide');
-
 }
 /**list of questions in the game, only seven will be asked */
 
@@ -213,7 +224,7 @@ answerThree.addEventListener('click', checkAnswer);
 answerFour.addEventListener('click', checkAnswer);
 
 
-let answerButtons = document.getElementsByClassName('answer-button')
+let answerButtons = document.getElementsByClassName('answer-button');
 let nextButton = document.getElementById('next-button');
 
 /**the function compares the clicked answer to the correct answer. 
@@ -221,14 +232,14 @@ let nextButton = document.getElementById('next-button');
  * if the answer clicked is wrong the button will turn red and the correct answer will be highlighted*/
 function checkAnswer(event){
     
-    clearInterval(interval);
+    clearInterval(Interval);
     const answerClicked = event.currentTarget.innerText;
     let correct = questionPool[currentQuestionIndex].correctAnswer;
     console.log(answerClicked)
     if(answerClicked === correct){
-            this.classList.add('right');
-            console.log('right!'); 
-        }
+        this.classList.add('right');
+        console.log('right!'); 
+    } 
     else{
         lifeCount();
         console.log('life lost')
@@ -243,7 +254,7 @@ function checkAnswer(event){
     nextButton.classList.remove('hide');
 }
 
-// the function allows you to move on to the next question. No question will be asked more than once.
+/**the function allows you to move on to the next question. No question will be asked more than once.*/
 nextButton.addEventListener('click', nextQuestion)
 function nextQuestion(){
     nextButton.classList.add('hide')
@@ -253,7 +264,26 @@ function nextQuestion(){
     }
     questionPool.shift()
     startQuiz();
-    interval = setInterval(countdown, 1000)
     incrementQuestionNumber();
+}
+
+nextButton.addEventListener('click', ()=>{
+    timeLeft = 11;
+    startTime(timeLeft);
+    Interval = setInterval(startTime, 1000)
+})
+
+let tryAgain = document.getElementById('try-again-button');
+tryAgain.addEventListener('click', restartQuiz)
+
+function restartQuiz(){
+    gameOverPage.classList.add('hide');
+    quizPage.classList.remove('hide');
+    lifeCountContainer.classList.remove('hide');
+    seconds.classList.remove('hide');
+    for(let i=0; i<answerButtons.length; i++){
+        answerButtons[i].classList.remove('right');
+        answerButtons[i].classList.remove('wrong');
+    }
 }
 
