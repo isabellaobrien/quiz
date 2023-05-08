@@ -65,11 +65,10 @@ function incrementScore(){
 }
 
 let currentQuestionNumber = 1;
-
 function incrementQuestionNumber(){
     currentQuestionNumber++;
     console.log(currentQuestionNumber)
-    if(currentQuestionNumber === 7){
+    if(currentQuestionNumber === 8){
        endGame();
        console.log('end game!')
     }
@@ -80,6 +79,7 @@ let finishingPage = document.getElementById('finishing-section');
 
 function endGame(){
     finishingPage.classList.remove('hide');
+    gameOverPage.classList.add('hide');
     quizPage.classList.add('hide');
 }
 
@@ -297,3 +297,13 @@ function restartQuiz(){
     window.location.reload(true);
 }
 
+const saveButton = document.getElementById('save-button')
+saveButton.addEventListener('click', showScores)
+const username = document.getElementById('username');
+const savedScore = document.getElementById('savedScore');
+const player = document.getElementById('player')
+function showScores(){
+    player.innerHTML = username.value;
+    localStorage.setItem('score', score.innerHTML);
+    savedScore.innerHTML = localStorage.getItem('score')
+}
