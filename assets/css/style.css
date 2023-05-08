@@ -115,3 +115,13 @@ input[type=text]{
 .wrong{
     background-color: red;
 }
+/* media query for mobile phone screens  */
+@media screen and (max-width: 500px) {
+    #logo{
+        width: 20%;
+    }
+    .game-area{
+        width: 80%;
+        
+    }
+}

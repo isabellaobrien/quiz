@@ -79,7 +79,6 @@ let finishingPage = document.getElementById('finishing-section');
 
 function endGame(){
     finishingPage.classList.remove('hide');
-    gameOverPage.classList.add('hide');
     quizPage.classList.add('hide');
 }
 
@@ -296,7 +295,7 @@ tryAgain.addEventListener('click', restartQuiz)
 function restartQuiz(){
     window.location.reload(true);
 }
-
+/**the showScores function allows you to momentarily save your score */
 const saveButton = document.getElementById('save-button')
 saveButton.addEventListener('click', showScores)
 const username = document.getElementById('username');
@@ -306,4 +305,5 @@ function showScores(){
     player.innerHTML = username.value;
     localStorage.setItem('score', score.innerHTML);
     savedScore.innerHTML = localStorage.getItem('score')
+    gameOverPage.classList.add('hide')
 }
