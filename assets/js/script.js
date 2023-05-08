@@ -4,7 +4,6 @@
  */
 
 const startButton = document.getElementById('start-button');
-
 startButton.addEventListener("click", startQuiz);
 
 let startingPage = document.getElementById('starting-section');
@@ -307,3 +306,5 @@ function showScores(){
     savedScore.innerHTML = localStorage.getItem('score')
     gameOverPage.classList.add('hide')
 }
+let playAgainButton = document.getElementById('play-again-button');
+playAgainButton.addEventListener('click', restartQuiz);
