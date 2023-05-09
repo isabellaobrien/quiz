@@ -1,18 +1,41 @@
+// eventlisteners 
+const startButton = document.getElementById('start-button');
+startButton.addEventListener("click", startQuiz);
+
+const answerOne = document.getElementById('answer-1');
+answerOne.addEventListener('click', checkAnswer);
+
+const answerTwo = document.getElementById('answer-2');
+answerTwo.addEventListener('click', checkAnswer);
+
+const answerThree = document.getElementById('answer-3');
+answerThree.addEventListener('click', checkAnswer);
+
+const answerFour = document.getElementById('answer-4');
+answerFour.addEventListener('click', checkAnswer);
+
+const nextButton = document.getElementById('next-button');
+nextButton.addEventListener('click', nextQuestion);
+
+const tryAgain = document.getElementById('try-again-button');
+tryAgain.addEventListener('click', restartQuiz);
+
+const saveButton = document.getElementById('save-button');
+saveButton.addEventListener('click', showScores);
+
+const playAgainButton = document.getElementById('play-again-button');
+playAgainButton.addEventListener('click', restartQuiz);
 /**the startQuiz function is activated once the start button is clicked.
  * The function hides the starting page and shows the quiz page.
  * the timer starts and the question to ask is selected.
  */
-
-const startButton = document.getElementById('start-button');
-startButton.addEventListener("click", startQuiz);
-
 const startingPage = document.getElementById('starting-section');
 const quizPage = document.getElementById('question-section');
 
 function startQuiz(){
     console.log("started");
     startingPage.classList.add('hide');
-    quizPage.classList.remove('hide')
+    quizPage.classList.remove('hide');
     selectQuestion();
 }
 
@@ -22,22 +45,22 @@ let timeLeft = 10;
 const seconds = document.getElementById('seconds');
 let interval;
 startButton.addEventListener('click', ()=> {
-    clearInterval(Interval);
-    interval = setInterval(startTime, 1000)
-})
+    clearInterval(interval);
+    interval = setInterval(startTime, 1000);
+});
 
 function startTime(){
     timeLeft--;
     if(timeLeft === -1){
-        lifeCount()
+        lifeCount();
         const correct = questionPool[currentQuestionIndex].correctAnswer;
         for (let i = 0; i < answerButtons.length; i++) {
             if (answerButtons[i].innerHTML === correct) {
                 answerButtons[i].classList.add('right'); 
             }
         }
-        clearInterval(interval)
-        nextButton.classList.remove('hide')
+        clearInterval(interval);
+        nextButton.classList.remove('hide');
     }
     else{
         seconds.innerHTML = timeLeft;
@@ -48,12 +71,12 @@ function startTime(){
 /**the function reduces the live count by 1. when the life count reaches 0 the gameOver function is called */
 
 const lives = document.getElementById('lives');
-let livesLeft = 3
+let livesLeft = 3;
 function lifeCount(){
     livesLeft -= 1;
     lives.innerHTML = livesLeft;
     if(livesLeft === 0){
-        gameOver()
+        gameOver();
     }
 }
 const score = document.getElementById('score');
@@ -66,10 +89,10 @@ function incrementScore(){
 let currentQuestionNumber = 1;
 function incrementQuestionNumber(){
     currentQuestionNumber++;
-    console.log(currentQuestionNumber)
+    console.log(currentQuestionNumber);
     if(currentQuestionNumber === 8){
        endGame();
-       console.log('end game!')
+       console.log('end game!');
     }
 }
 
@@ -197,27 +220,24 @@ const questionPool= [{
     choices: ["Germany","USA","Israel","Austria"],
     correctAnswer: "Israel"  
 },
-]
+];
 
 /**the function shuffles the pool of questions and then selects seven */
 
 function selectQuestion(){
-    questionPool.sort(()=> 0.5 - Math.random())
+    questionPool.sort(()=> 0.5 - Math.random());
     displayQuestion(currentQuestionIndex);
 }
 
 const question = document.getElementById('question');
-const answerOne = document.getElementById('answer-1');
-const answerTwo = document.getElementById('answer-2');
-const answerThree = document.getElementById('answer-3');
-const answerFour = document.getElementById('answer-4');
+
 
 /**the function shuffles the answers and then displays the question and answers. */
-let currentQuestionIndex = 0
+let currentQuestionIndex = 0;
 
 function displayQuestion(index){
     questionPool[currentQuestionIndex].choices.sort(()=> 0.5 - Math.random())
-    const currentQuestion = questionPool[index]
+    const currentQuestion = questionPool[index];
     question.innerHTML = currentQuestion.question;
     answerOne.innerHTML = currentQuestion.choices[0];
     answerTwo.innerHTML = currentQuestion.choices[1];
@@ -226,14 +246,7 @@ function displayQuestion(index){
     
 }
 
-answerOne.addEventListener('click', checkAnswer);
-answerTwo.addEventListener('click', checkAnswer);
-answerThree.addEventListener('click', checkAnswer);
-answerFour.addEventListener('click', checkAnswer);
-
-
 const answerButtons = document.getElementsByClassName('answer-button');
-const nextButton = document.getElementById('next-button');
 
 /**the function compares the clicked answer to the correct answer. 
  * If the answer clicked is the correct one the button will turn green,
@@ -248,7 +261,7 @@ function checkAnswer(event){
     clearInterval(interval);
     const answerClicked = event.currentTarget.innerText;
     const correct = questionPool[currentQuestionIndex].correctAnswer;
-    console.log(answerClicked)
+    console.log(answerClicked);
     if(answerClicked === correct){
         this.classList.add('right');
         console.log('right!'); 
@@ -256,7 +269,7 @@ function checkAnswer(event){
     } 
     else{
         lifeCount();
-        console.log('life lost')
+        console.log('life lost');
         this.classList.add('wrong');
         console.log('wrong!');
         for (let i = 0; i < answerButtons.length; i++) {
@@ -269,15 +282,13 @@ function checkAnswer(event){
 }
 
 /**the function allows you to move on to the next question. No question will be asked more than once.*/
-
-nextButton.addEventListener('click', nextQuestion)
 function nextQuestion(){
-    nextButton.classList.add('hide')
+    nextButton.classList.add('hide');
     for(let i=0; i<answerButtons.length; i++){
         answerButtons[i].classList.remove('right');
         answerButtons[i].classList.remove('wrong');
     }
-    questionPool.shift()
+    questionPool.shift();
     startQuiz();
     incrementQuestionNumber();
 }
@@ -285,26 +296,20 @@ function nextQuestion(){
 nextButton.addEventListener('click', ()=>{
     timeLeft = 11;
     startTime(timeLeft);
-    interval = setInterval(startTime, 1000)
-})
+    interval = setInterval(startTime, 1000);
+});
 /**the restartQuiz fubction allows yo to restart the quiz by clicking the try again button */
-const tryAgain = document.getElementById('try-again-button');
-tryAgain.addEventListener('click', restartQuiz)
 
 function restartQuiz(){
     window.location.reload(true);
 }
 /**the showScores function allows you to momentarily save your score */
-const saveButton = document.getElementById('save-button')
-saveButton.addEventListener('click', showScores)
 const username = document.getElementById('username');
 const savedScore = document.getElementById('savedScore');
-const player = document.getElementById('player')
+const player = document.getElementById('player');
 function showScores(){
     player.innerHTML = username.value;
     localStorage.setItem('score', score.innerHTML);
-    savedScore.innerHTML = localStorage.getItem('score')
-    gameOverPage.classList.add('hide')
+    savedScore.innerHTML = localStorage.getItem('score');
+    gameOverPage.classList.add('hide');
 }
-const playAgainButton = document.getElementById('play-again-button');
-playAgainButton.addEventListener('click', restartQuiz);
