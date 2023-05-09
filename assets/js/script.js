@@ -6,8 +6,8 @@
 const startButton = document.getElementById('start-button');
 startButton.addEventListener("click", startQuiz);
 
-let startingPage = document.getElementById('starting-section');
-let quizPage = document.getElementById('question-section');
+const startingPage = document.getElementById('starting-section');
+const quizPage = document.getElementById('question-section');
 
 function startQuiz(){
     console.log("started");
@@ -19,11 +19,11 @@ function startQuiz(){
 /**the countDown function should countdown from 10. if the timer reaches 0 you loose a live */
 
 let timeLeft = 10;
-let seconds = document.getElementById('seconds');
-let Interval;
+const seconds = document.getElementById('seconds');
+let interval;
 startButton.addEventListener('click', ()=> {
     clearInterval(Interval);
-    Interval = setInterval(startTime, 1000)
+    interval = setInterval(startTime, 1000)
 })
 
 function startTime(){
@@ -36,7 +36,7 @@ function startTime(){
                 answerButtons[i].classList.add('right'); 
             }
         }
-        clearInterval(Interval)
+        clearInterval(interval)
         nextButton.classList.remove('hide')
     }
     else{
@@ -47,7 +47,7 @@ function startTime(){
 
 /**the function reduces the live count by 1. when the life count reaches 0 the gameOver function is called */
 
-let lives = document.getElementById('lives')
+const lives = document.getElementById('lives');
 let livesLeft = 3
 function lifeCount(){
     livesLeft -= 1;
@@ -56,7 +56,7 @@ function lifeCount(){
         gameOver()
     }
 }
-let score = document.getElementById('score');
+const score = document.getElementById('score');
 let scorePoints = 0;
 function incrementScore(){
     scorePoints += 150;
@@ -74,7 +74,7 @@ function incrementQuestionNumber(){
 }
 
 /** the endGame function shows the finishing page once the question count has reached 7 */
-let finishingPage = document.getElementById('finishing-section');
+const finishingPage = document.getElementById('finishing-section');
 
 function endGame(){
     finishingPage.classList.remove('hide');
@@ -82,8 +82,8 @@ function endGame(){
 }
 
 /** the gameOver function displays the gameover page once the lifecount has reached 0 */
-let lifeCountContainer = document.getElementById('life-count');
-let gameOverPage = document.getElementById('gameover-section');
+const lifeCountContainer = document.getElementById('life-count');
+const gameOverPage = document.getElementById('gameover-section');
 function gameOver(){
     lifeCountContainer.classList.add('hide');
     seconds.classList.add('hide');
@@ -92,7 +92,7 @@ function gameOver(){
 }
 /**list of questions in the game, only seven will be asked */
 
-let questionPool= [{
+const questionPool= [{
     question: "How many elements are in the periodic table?",
     choices: ["120","178", "104", "118"],
     correctAnswer: "118"
@@ -206,11 +206,11 @@ function selectQuestion(){
     displayQuestion(currentQuestionIndex);
 }
 
-let question = document.getElementById('question');
-let answerOne = document.getElementById('answer-1');
-let answerTwo = document.getElementById('answer-2');
-let answerThree = document.getElementById('answer-3');
-let answerFour = document.getElementById('answer-4');
+const question = document.getElementById('question');
+const answerOne = document.getElementById('answer-1');
+const answerTwo = document.getElementById('answer-2');
+const answerThree = document.getElementById('answer-3');
+const answerFour = document.getElementById('answer-4');
 
 /**the function shuffles the answers and then displays the question and answers. */
 let currentQuestionIndex = 0
@@ -232,8 +232,8 @@ answerThree.addEventListener('click', checkAnswer);
 answerFour.addEventListener('click', checkAnswer);
 
 
-let answerButtons = document.getElementsByClassName('answer-button');
-let nextButton = document.getElementById('next-button');
+const answerButtons = document.getElementsByClassName('answer-button');
+const nextButton = document.getElementById('next-button');
 
 /**the function compares the clicked answer to the correct answer. 
  * If the answer clicked is the correct one the button will turn green,
@@ -243,11 +243,11 @@ let nextButton = document.getElementById('next-button');
  * 
  * @param {Event} event 
  */
-let correct;
+
 function checkAnswer(event){
-    clearInterval(Interval);
+    clearInterval(interval);
     const answerClicked = event.currentTarget.innerText;
-    correct = questionPool[currentQuestionIndex].correctAnswer;
+    const correct = questionPool[currentQuestionIndex].correctAnswer;
     console.log(answerClicked)
     if(answerClicked === correct){
         this.classList.add('right');
@@ -285,10 +285,10 @@ function nextQuestion(){
 nextButton.addEventListener('click', ()=>{
     timeLeft = 11;
     startTime(timeLeft);
-    Interval = setInterval(startTime, 1000)
+    interval = setInterval(startTime, 1000)
 })
 /**the restartQuiz fubction allows yo to restart the quiz by clicking the try again button */
-let tryAgain = document.getElementById('try-again-button');
+const tryAgain = document.getElementById('try-again-button');
 tryAgain.addEventListener('click', restartQuiz)
 
 function restartQuiz(){
@@ -306,5 +306,5 @@ function showScores(){
     savedScore.innerHTML = localStorage.getItem('score')
     gameOverPage.classList.add('hide')
 }
-let playAgainButton = document.getElementById('play-again-button');
+const playAgainButton = document.getElementById('play-again-button');
 playAgainButton.addEventListener('click', restartQuiz);
