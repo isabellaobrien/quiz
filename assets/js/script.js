@@ -33,6 +33,7 @@ const startingPage = document.getElementById('starting-section');
 const quizPage = document.getElementById('question-section');
 
 function startQuiz(){
+    quizFinished = false;
     console.log("started");
     startingPage.classList.add('hide');
     quizPage.classList.remove('hide');
@@ -51,7 +52,7 @@ startButton.addEventListener('click', ()=> {
 
 function startTime(){
     timeLeft--;
-    if(timeLeft === -1){
+    if(timeLeft === -1 && quizFinished === false){
         lifeCount();
         const correct = questionPool[currentQuestionIndex].correctAnswer;
         for (let i = 0; i < answerButtons.length; i++) {
@@ -75,9 +76,12 @@ let livesLeft = 3;
 function lifeCount(){
     livesLeft -= 1;
     lives.innerHTML = livesLeft;
+    console.log(livesLeft)
+    
     if(livesLeft === 0){
         gameOver();
     }
+    
 }
 const score = document.getElementById('score');
 let scorePoints = 0;
@@ -91,19 +95,43 @@ function incrementQuestionNumber(){
     currentQuestionNumber++;
     console.log(currentQuestionNumber);
     if(currentQuestionNumber === 8){
+       clearInterval(interval) 
        endGame();
        console.log('end game!');
     }
 }
 
+
 /** the endGame function shows the finishing page once the question count has reached 7 */
 const finishingPage = document.getElementById('finishing-section');
 
 function endGame(){
+    quizFinished = true;
     finishingPage.classList.remove('hide');
     quizPage.classList.add('hide');
+    console.log(livesLeft)
+    console.log|(timeLeft)
+    console.log(gameOverPage.classList)
+    
 }
 
+// function gameOutcome(){
+//     if(livesLeft === 0){
+//         lifeCountContainer.classList.add('hide');
+//         seconds.classList.add('hide');
+//         quizPage.classList.add('hide');
+//         gameOverPage.classList.remove('hide');
+//     }
+//     if(currentQuestionNumber === 8){
+//         finishingPage.classList.remove('hide');
+//         quizPage.classList.add('hide');
+//         console.log(livesLeft);
+//         console.log|(timeLeft);
+//         if(finishingPage.classList.remove('hide')){
+//             gameOverPage.classList.add('hide')
+//         }
+//     }
+// }
 /** the gameOver function displays the gameover page once the lifecount has reached 0 */
 const lifeCountContainer = document.getElementById('life-count');
 const gameOverPage = document.getElementById('gameover-section');
@@ -112,6 +140,8 @@ function gameOver(){
     seconds.classList.add('hide');
     quizPage.classList.add('hide');
     gameOverPage.classList.remove('hide');
+    console.log(gameOverPage)
+    console.log(livesLeft)
 }
 /**list of questions in the game, only seven will be asked */
 
@@ -270,6 +300,7 @@ function checkAnswer(event){
     else{
         lifeCount();
         console.log('life lost');
+        console.log(livesLeft)
         this.classList.add('wrong');
         console.log('wrong!');
         for (let i = 0; i < answerButtons.length; i++) {
@@ -282,6 +313,7 @@ function checkAnswer(event){
 }
 
 /**the function allows you to move on to the next question. No question will be asked more than once.*/
+let quizFinished = false
 function nextQuestion(){
     nextButton.classList.add('hide');
     for(let i=0; i<answerButtons.length; i++){
@@ -295,7 +327,8 @@ function nextQuestion(){
 
 nextButton.addEventListener('click', ()=>{
     timeLeft = 11;
-    startTime(timeLeft);
+    startTime();
+    clearInterval(interval)
     interval = setInterval(startTime, 1000);
 });
 /**the restartQuiz fubction allows yo to restart the quiz by clicking the try again button */
@@ -312,4 +345,5 @@ function showScores(){
     localStorage.setItem('score', score.innerHTML);
     savedScore.innerHTML = localStorage.getItem('score');
     gameOverPage.classList.add('hide');
+    console.log(gameOverPage)
 }

@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Goldman&family=Patua+One&family=Vina+Sans&display=swap');
 
 /* quiz heading plus logo */
+body{
+    color:black!important;
+}
 #logo{
     background-repeat: no-repeat;
     background-size: cover;
