@@ -65,8 +65,13 @@ Live project: [HOW KNOWLEDGEABLE ARE YOU?](https://isabellaobrien.github.io/quiz
 ![screenshot of W3C CSS validator](/assets/images/Screenshot%20(78).png)
 * I used js linter called [JSlint](https://www.jslint.com/) and [JShint](https://jshint.com/) and no major issues were raised.
 * I confirmed the website's accessibility and readability by using lighthouse in devtools.
-    * on desktop: ![screenshot of lighthouse results on desktop](/assets/images/Screenshot%20(38).png)
-    * on mobile: ![screenshot of lighthouse results on mobile](/assets/images/Screenshot%20(39).png)
+    * on desktop: 
+    
+    ![screenshot of lighthouse results on desktop](/assets/images/Screenshot%20(38).png)
+
+    * on mobile: 
+    
+    ![screenshot of lighthouse results on mobile](/assets/images/Screenshot%20(39).png)
 
 ## Unfixed bug:
 Each time you play the quiz you have 7 questions to answer. These questions are randomly chosen from an array of 21 questions. Once a question has been answered it gets removed from the array of questions so that it does not repeat itself.

@@ -25,9 +25,9 @@ saveButton.addEventListener('click', showScores);
 
 const playAgainButton = document.getElementById('play-again-button');
 playAgainButton.addEventListener('click', restartQuiz);
-/**the startQuiz function is activated once the start button is clicked.
- * The function hides the starting page and shows the quiz page.
- * the timer starts and the question to ask is selected.
+/*the startQuiz function is activated once the start button is clicked.
+  The function hides the starting page and shows the quiz page.
+  the timer starts and the question to ask is selected.
  */
 const startingPage = document.getElementById('starting-section');
 const quizPage = document.getElementById('question-section');
@@ -40,7 +40,7 @@ function startQuiz(){
     selectQuestion();
 }
 
-/**the countDown function should countdown from 10. if the timer reaches 0 you loose a live */
+/*the countDown function should countdown from 10. if the timer reaches 0 you loose a live */
 
 let timeLeft = 10;
 const seconds = document.getElementById('seconds');
@@ -69,14 +69,13 @@ function startTime(){
 }
 
 
-/**the function reduces the live count by 1. when the life count reaches 0 the gameOver function is called */
+/*the function reduces the live count by 1. when the life count reaches 0 the gameOver function is called */
 
 const lives = document.getElementById('lives');
 let livesLeft = 3;
 function lifeCount(){
     livesLeft -= 1;
     lives.innerHTML = livesLeft;
-    console.log(livesLeft)
     
     if(livesLeft === 0){
         gameOver();
@@ -93,11 +92,9 @@ function incrementScore(){
 let currentQuestionNumber = 1;
 function incrementQuestionNumber(){
     currentQuestionNumber++;
-    console.log(currentQuestionNumber);
     if(currentQuestionNumber === 8){
        clearInterval(interval) 
        endGame();
-       console.log('end game!');
     }
 }
 
@@ -109,29 +106,9 @@ function endGame(){
     quizFinished = true;
     finishingPage.classList.remove('hide');
     quizPage.classList.add('hide');
-    console.log(livesLeft)
-    console.log|(timeLeft)
-    console.log(gameOverPage.classList)
-    
 }
 
-// function gameOutcome(){
-//     if(livesLeft === 0){
-//         lifeCountContainer.classList.add('hide');
-//         seconds.classList.add('hide');
-//         quizPage.classList.add('hide');
-//         gameOverPage.classList.remove('hide');
-//     }
-//     if(currentQuestionNumber === 8){
-//         finishingPage.classList.remove('hide');
-//         quizPage.classList.add('hide');
-//         console.log(livesLeft);
-//         console.log|(timeLeft);
-//         if(finishingPage.classList.remove('hide')){
-//             gameOverPage.classList.add('hide')
-//         }
-//     }
-// }
+
 /** the gameOver function displays the gameover page once the lifecount has reached 0 */
 const lifeCountContainer = document.getElementById('life-count');
 const gameOverPage = document.getElementById('gameover-section');
@@ -140,10 +117,8 @@ function gameOver(){
     seconds.classList.add('hide');
     quizPage.classList.add('hide');
     gameOverPage.classList.remove('hide');
-    console.log(gameOverPage)
-    console.log(livesLeft)
 }
-/**list of questions in the game, only seven will be asked */
+/*list of questions in the game, only seven will be asked */
 
 const questionPool= [{
     question: "How many elements are in the periodic table?",
@@ -278,31 +253,22 @@ function displayQuestion(index){
 
 const answerButtons = document.getElementsByClassName('answer-button');
 
-/**the function compares the clicked answer to the correct answer. 
- * If the answer clicked is the correct one the button will turn green,
- * if the answer clicked is wrong the button will turn red and the correct answer will be highlighted*/
+/*the function compares the clicked answer to the correct answer. 
+  If the answer clicked is the correct one the button will turn green,
+  if the answer clicked is wrong the button will turn red and the correct answer will be highlighted*/
 
-/**
- * 
- * @param {Event} event 
- */
 
 function checkAnswer(event){
     clearInterval(interval);
     const answerClicked = event.currentTarget.innerText;
     const correct = questionPool[currentQuestionIndex].correctAnswer;
-    console.log(answerClicked);
     if(answerClicked === correct){
         this.classList.add('right');
-        console.log('right!'); 
         incrementScore();
     } 
     else{
         lifeCount();
-        console.log('life lost');
-        console.log(livesLeft)
         this.classList.add('wrong');
-        console.log('wrong!');
         for (let i = 0; i < answerButtons.length; i++) {
             if (answerButtons[i].innerHTML === correct) {
                 answerButtons[i].classList.add('right'); 
@@ -345,5 +311,4 @@ function showScores(){
     localStorage.setItem('score', score.innerHTML);
     savedScore.innerHTML = localStorage.getItem('score');
     gameOverPage.classList.add('hide');
-    console.log(gameOverPage)
 }
