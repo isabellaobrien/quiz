@@ -34,7 +34,6 @@ const quizPage = document.getElementById('question-section');
 
 function startQuiz(){
     quizFinished = false;
-    console.log("started");
     startingPage.classList.add('hide');
     quizPage.classList.remove('hide');
     selectQuestion();

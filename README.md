@@ -57,6 +57,7 @@ Live project: [HOW KNOWLEDGEABLE ARE YOU?](https://isabellaobrien.github.io/quiz
 | Click the try again button | the starting page should appear allowing the user to restart the quiz | pass |
 | Click the save button | this button should save the score temporarily | pass |
 | Click the play again button | the starting page should appear allowing the user to restart the quiz | pass |
+| the timer runs out | the life count should go down by one and the correct answer should be highlighted and the next button should appear | pass |
 
 ### Validator testing
 * I tested the HTML with the [W3C markup validation service](https://validator.w3.org/) and no errors or warnings were returned.
@@ -73,12 +74,14 @@ Live project: [HOW KNOWLEDGEABLE ARE YOU?](https://isabellaobrien.github.io/quiz
     
     ![screenshot of lighthouse results on mobile](/assets/images/Screenshot%20(39).png)
 
-## Unfixed bug:
-Each time you play the quiz you have 7 questions to answer. These questions are randomly chosen from an array of 21 questions. Once a question has been answered it gets removed from the array of questions so that it does not repeat itself.
+## Unfixed bugs:
+1 - Each time you play the quiz you have 7 questions to answer. These questions are randomly chosen from an array of 21 questions. Once a question has been answered it gets removed from the array of questions so that it does not repeat itself.
 
 The problem is that once you have played the game three times and therefore  answered 21 questions there are none left. The initial idea was to restore the questions to the array and ask them again, this was not possible because of time constraints and problems with codeAnywhere. It definitely is something I would like to implement in the future. 
 
 A temporary solution was reloading the page using window.location.reload so the question array would start from 21 again.
+
+2 - Once an answer had been selected, if it is correct it turns green, if it is incorrect it turns red and the correct answer is highlighted in green. The next button then appears and the user can move on to the next question. The issue is that the user can still click the other answers once they have already selected one therefore losing more lives. It is definetly an issue I would like to solve in the future.
 
 
 ## Deployment:
