@@ -54,9 +54,9 @@ Live project: [HOW KNOWLEDGEABLE ARE YOU?](https://isabellaobrien.github.io/quiz
 | Click the start button | quiz page should appear | pass |
 | Click an answer button | once an answer is selected the timer should stop and the next button should appear if the answer  is correct it should turn green, If the answer  is incorrect the button should turn red and the correct answer should be highlighted in green | pass |
 | Click the next button | the quiz page should display a new question and the timer should restart | pass |
-| Click the try again button | the starting page should appear allowing you to restart the quiz | pass |
+| Click the try again button | the starting page should appear allowing the user to restart the quiz | pass |
 | Click the save button | this button should save the score temporarily | pass |
-| Click the play again button | the starting page should appear allowing you the user to restart the quiz | pass |
+| Click the play again button | the starting page should appear allowing the user to restart the quiz | pass |
 
 ### Validator testing
 * I tested the HTML with the [W3C markup validation service](https://validator.w3.org/) and no errors or warnings were returned.
@@ -65,20 +65,18 @@ Live project: [HOW KNOWLEDGEABLE ARE YOU?](https://isabellaobrien.github.io/quiz
 ![screenshot of W3C CSS validator](/assets/images/Screenshot%20(78).png)
 * I used js linter called [JSlint](https://www.jslint.com/) and [JShint](https://jshint.com/) and no major issues were raised.
 * I confirmed the website's accessibility and readability by using lighthouse in devtools.
-    * on desktop:
-    ![screenshot of lighthouse results on desktop](/assets/images/Screenshot%20(38).png)
-    * on mobile: 
-    ![screenshot of lighthouse results on mobile](/assets/images/Screenshot%20(39).png)
+    * on desktop: ![screenshot of lighthouse results on desktop](/assets/images/Screenshot%20(38).png)
+    * on mobile: ![screenshot of lighthouse results on mobile](/assets/images/Screenshot%20(39).png)
 
 ## Unfixed bug:
 Each time you play the quiz you have 7 questions to answer. These questions are randomly chosen from an array of 21 questions. Once a question has been answered it gets removed from the array of questions so that it does not repeat itself.
 
-The problem is that once you have played the game and therefore  answered 21 questions there are none left. The initial idea was to restore the questions to the array and ask them again, this was not possible because of time constraints and problems with codeAnywhere. It definitely is something I would like to implement in the future. 
+The problem is that once you have played the game three times and therefore  answered 21 questions there are none left. The initial idea was to restore the questions to the array and ask them again, this was not possible because of time constraints and problems with codeAnywhere. It definitely is something I would like to implement in the future. 
 
 A temporary solution was reloading the page using window.location.reload so the question array would start from 21 again.
 
 
-## Deplyment:
+## Deployment:
 The site was deployed via github pages:
 * I navigated to my github repository.
 * I clicked settings.
